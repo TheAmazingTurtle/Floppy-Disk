@@ -10,6 +10,9 @@ const JUMP_VELOCITY = -600.0
 
 var is_going_right :=  true
 
+func _ready() -> void:
+	position = GameConfig.SCREEN_SIZE/2
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

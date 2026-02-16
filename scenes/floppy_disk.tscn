@@ -40,9 +40,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gu111"]
-size = Vector2(9, 18)
+size = Vector2(9, 19)
 
-[node name="FloppyDisk" type="CharacterBody2D"]
+[node name="FloppyDisk" type="CharacterBody2D" groups=["movable", "player"]]
 script = ExtResource("1_tv3j3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -50,10 +50,10 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_b7p4v")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.61738
+frame_progress = 0.15495713
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_gu111")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
