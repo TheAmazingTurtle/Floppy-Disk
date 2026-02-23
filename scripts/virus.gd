@@ -14,4 +14,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		
+		# for now
+		get_tree().reload_current_scene()
+		
 		player_lose.emit()

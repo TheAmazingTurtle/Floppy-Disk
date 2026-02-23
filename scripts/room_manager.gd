@@ -6,7 +6,9 @@ const BITS = preload("uid://gbnv60og4kua")
 const ROOM = preload("uid://c3xuv3iytwkw")
 const MIN_COMPARTMENT_WIDTH = 4
 
-var level = 1
+@onready var score: Label = $"../Score"
+
+var level = 0
 var new_room_size := Vector2i(25, 12)
 var new_compartment_num := 3
 
@@ -26,7 +28,6 @@ func _process(delta: float) -> void:
 		current_room.open()
 		
 		level += 1
-		
 		
 		if level % 5 == 0 and new_room_size.x < 37:
 			new_room_size.x += new_compartment_num
@@ -66,6 +67,8 @@ func _generate_coins_inside_next_room(num: int) -> void:
 func _on_player_exit() -> void:
 	current_room = next_room
 	current_room.close()
+	
+	score.text = "Level No.: " + str(level)
 	
 	next_room = _create_room(new_room_size, new_compartment_num)
 	next_level_ready.emit(_get_move_offset())
