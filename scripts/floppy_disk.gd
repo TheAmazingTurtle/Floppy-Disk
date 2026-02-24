@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
+		$FlappingSound.play()
 		velocity.y = JUMP_VELOCITY
 
 	velocity.x = (1 if is_going_right else -1) * SPEED

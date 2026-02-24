@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf7cyhpvgjhy0"]
+[gd_scene load_steps=10 format=3 uid="uid://cf7cyhpvgjhy0"]
 
 [ext_resource type="Script" uid="uid://c4pbyips2bvdy" path="res://scripts/virus.gd" id="1_8wh0f"]
 [ext_resource type="Texture2D" uid="uid://c5n1pk0m6e12y" path="res://assets/sprites/slime_purple.png" id="2_0kg14"]
+[ext_resource type="AudioStream" uid="uid://dsegplmxfl5di" path="res://assets/sounds/sfx_hit.wav" id="3_0kg14"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m83q2"]
 atlas = ExtResource("2_0kg14")
@@ -54,5 +55,8 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jns7i")
+
+[node name="FloppyHitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0kg14")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

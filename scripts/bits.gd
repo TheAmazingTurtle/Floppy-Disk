@@ -3,14 +3,17 @@ extends Area2D
 signal coin_pickup
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var bit_coin_sound: AudioStreamPlayer2D = $BitCoinSound
 
 func _ready() -> void:
 	$AnimatedSprite2D.frame = randi() % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		
 		_pickup()
 		coin_pickup.emit()
+		$BitCoinSound.play()
 
 func _pickup() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -20,4 +23,5 @@ func _pickup() -> void:
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)
 	
 	await tween.finished
+	#await bit_coin_sound.finished
 	queue_free()

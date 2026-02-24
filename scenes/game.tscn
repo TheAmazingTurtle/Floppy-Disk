@@ -1,15 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://b437jucdxy6r"]
+[gd_scene load_steps=8 format=3 uid="uid://b437jucdxy6r"]
 
 [ext_resource type="Script" uid="uid://cn2waig28ha5e" path="res://scripts/transition_manager.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://hwjon4rioefk" path="res://scripts/room_manager.gd" id="1_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://crws05tv8b1fc" path="res://assets/sprites/Blue circuit board pixelated.png" id="1_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dhbu7qnljivln" path="res://scenes/floppy_disk.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cf7cyhpvgjhy0" path="res://scenes/virus.tscn" id="4_lbhrr"]
-[ext_resource type="FontFile" uid="uid://0q2tpaghfflr" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_iywne"]
+[ext_resource type="FontFile" uid="uid://f4ny7jjemjm2" path="res://assets/fonts/karmatic-arcade/ka1.ttf" id="6_p57ef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
-font = ExtResource("5_iywne")
+font = ExtResource("6_p57ef")
+font_size = 25
 
 [node name="Game" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1281.0
+offset_bottom = 723.0
+texture = ExtResource("1_p57ef")
+expand_mode = 1
 
 [node name="TransitionManager" type="Node2D" parent="."]
 script = ExtResource("1_lbhrr")
@@ -21,6 +29,7 @@ script = ExtResource("1_lnu2h")
 position = Vector2(636, 272)
 
 [node name="Virus" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(644, 824)
 
 [node name="Score" type="Label" parent="."]
 anchors_preset = 5
