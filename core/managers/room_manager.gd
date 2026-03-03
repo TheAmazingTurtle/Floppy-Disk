@@ -32,7 +32,7 @@ func _create_room(room_size: Vector2i, compartment_num: int, is_new_room = true,
 	var room_scene = ROOM.instantiate()
 	add_child(room_scene)
 	
-	var enemies : Array
+	var enemies := []
 	
 	for i in range(2, level, 5):
 		enemies.append(TROJAN)
@@ -71,7 +71,7 @@ func _generate_bits_inside_next_room(num: int) -> void:
 func _progress_level():
 	level += 1
 	
-	if level % 5 == 0 and new_room_size.x < 37:
+	if level % 4 == 0 and new_room_size.x < 37:
 		new_room_size.x += new_compartment_num
 		
 		if (new_room_size.x - new_compartment_num*2 - 2) / (new_compartment_num * 2) >= MIN_COMPARTMENT_WIDTH:

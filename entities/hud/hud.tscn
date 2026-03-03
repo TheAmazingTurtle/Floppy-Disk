@@ -35,7 +35,6 @@ offset_right = 1280.0
 offset_bottom = 65.0
 
 [node name="Score" type="Label" parent="Details"]
-visible = false
 layout_mode = 2
 text = "Lobby"
 label_settings = SubResource("LabelSettings_8ya5m")

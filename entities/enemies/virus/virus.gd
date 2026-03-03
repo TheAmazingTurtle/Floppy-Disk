@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 100
+const SPEED = 75
 
 @onready var floppy_disk: Node = get_tree().get_nodes_in_group("player")[0]
 

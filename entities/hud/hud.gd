@@ -2,6 +2,7 @@ extends CanvasLayer
 
 const PADDING = 40
 
+@onready var details: MarginContainer = $Details
 @onready var score: Label = $Details/Score
 @onready var game_over_screen: Control = $GameOverScreen
 @onready var game_over: Label = $GameOverScreen/GameOver
@@ -35,13 +36,13 @@ func _on_room_manager_level_cleared(new_level: int) -> void:
 
 func _on_game_game_started() -> void:
 	start_screen.visible = false
-	score.visible = true
+	details.visible = true
 
 
 func _on_game_game_over(cur_level: int) -> void:
 	level_achieved.text = "You have reached level " + str(cur_level) + "!"
 	
-	score.visible = false
+	details.visible = false
 	game_over_screen.visible = true
 	
 	
