@@ -1,12 +1,12 @@
 extends Node2D
 
-const SPEED = 800
+const SPEED = 200
 
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var dash_timer: Timer = $DashTimer
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var floppy_disk: Node = get_tree().get_nodes_in_group("player")[0]
+@onready var floppy_disk: Node = get_tree().get_nodes_in_group("player")[0]
 var direction : Vector2
 var is_dashing := false
 
@@ -21,6 +21,9 @@ func _process(delta: float) -> void:
 	position += direction * SPEED * delta
 
 func _on_cooldown_timer_timeout() -> void:
+	if floppy_disk == null:
+		return
+		
 	direction = global_position.direction_to(floppy_disk.global_position)
 	
 	if direction.x != 0:
