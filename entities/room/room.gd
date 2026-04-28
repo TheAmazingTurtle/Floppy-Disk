@@ -26,7 +26,7 @@ func _construct_tiles() -> void:
 
 func _configure_exit_trigger() -> void:
 	if data.exit_tiles.is_empty():
-		exit_collision.shape = null
+		exit_collision.set_deferred("shape", null)
 		return
 	
 	var min_tile: Vector2i = data.exit_tiles[0]
@@ -45,8 +45,8 @@ func _configure_exit_trigger() -> void:
 	
 	shape.size = bottom_right - top_left
 	exit_collision.position = top_left + shape.size / 2.0
-	exit_collision.shape = shape
-	exit_collision.disabled = true
+	exit_collision.set_deferred("shape", shape)
+	exit_collision.set_deferred("disabled", true)
 
 func summon_enemies():
 	for enemy in data.enemies:
@@ -54,7 +54,7 @@ func summon_enemies():
 		add_child(enemy_scene)
 
 func open() -> void:
-	exit_collision.disabled = false
+	exit_collision.set_deferred("disabled", false)
 	for tile_pos in data.exit_tiles:
 		tile_map_layer.erase_cell(tile_pos)
 
