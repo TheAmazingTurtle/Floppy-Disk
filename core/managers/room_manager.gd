@@ -52,21 +52,23 @@ func _create_room(room_size: Vector2i, compartment_num: int, is_new_room = true,
 	return room_scene
 
 func _generate_bits_inside_next_room(num: int) -> void:
-	var bit_coords : Array
-	var count := 0
-	while count < num:
-		var x = randi_range(1, new_room_size.x-1)
-		var y = randi_range(1, new_room_size.y-2)
+	var valid_coords: Array[Vector2i] = []
+	
+	for x in range(1, new_room_size.x):
+		for y in range(1, new_room_size.y - 1):
+			var candidate = Vector2i(x, y)
+			if candidate not in next_room.data.barrier_tiles:
+				valid_coords.append(candidate)
+	
+	valid_coords.shuffle()
+	var spawn_count := mini(num, valid_coords.size())
+	
+	for i in range(spawn_count):
+		var candidate = valid_coords[i]
+		var bit = BITS.instantiate()
+		add_child(bit)
 		
-		var candidate = Vector2i(x,y)
-		if candidate not in next_room.data.barrier_tiles and candidate not in bit_coords:
-			bit_coords.append(candidate)
-			
-			var bit = BITS.instantiate()
-			add_child(bit)
-			
-			bit.position = (candidate as Vector2) * GameConfig.TILE_SIZE + next_room.position + Vector2(GameConfig.TILE_SIZE/2, GameConfig.TILE_SIZE/2)
-			count += 1
+		bit.position = (candidate as Vector2) * GameConfig.TILE_SIZE + next_room.position + Vector2(GameConfig.TILE_SIZE/2, GameConfig.TILE_SIZE/2)
 
 func _progress_level():
 	level += 1
