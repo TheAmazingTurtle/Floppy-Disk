@@ -13,7 +13,7 @@ var running := false
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
-	position = GameConfig.SCREEN_SIZE/2
+	position = GameConfig.get_screen_size(self) / 2.0
 	visible = false
 
 func _physics_process(delta: float) -> void:

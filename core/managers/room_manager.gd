@@ -43,11 +43,12 @@ func _create_room(room_size: Vector2i, compartment_num: int, is_new_room = true,
 	room_scene.setup(room_size, compartment_num, enemies, has_entrance)
 	room_scene.connect("player_exit", _on_player_exit)
 	
-	room_scene.position.x = (GameConfig.SCREEN_SIZE.x - room_size.x * GameConfig.TILE_SIZE) / 2
+	var screen_size := GameConfig.get_screen_size(self)
+	room_scene.position.x = (screen_size.x - room_size.x * GameConfig.TILE_SIZE) / 2.0
 	if is_new_room:
 		room_scene.position.y = current_room.position.y - (room_size.y - 1) * GameConfig.TILE_SIZE
 	else:
-		room_scene.position.y = (GameConfig.SCREEN_SIZE.y - room_size.y * GameConfig.TILE_SIZE) / 2
+		room_scene.position.y = (screen_size.y - room_size.y * GameConfig.TILE_SIZE) / 2.0
 		
 	return room_scene
 
@@ -95,7 +96,8 @@ func _on_player_exit() -> void:
 	_set_next_level()
 
 func _get_move_offset() -> Vector2:
-	return current_room.position - (GameConfig.SCREEN_SIZE - (current_room.data.room_size as Vector2) * GameConfig.TILE_SIZE) / 2
+	var screen_size := GameConfig.get_screen_size(self)
+	return current_room.position - (screen_size - (current_room.data.room_size as Vector2) * GameConfig.TILE_SIZE) / 2.0
 
 func _on_game_game_started() -> void:
 	current_room = _create_room(Vector2i(22, 12), 1, false, false)

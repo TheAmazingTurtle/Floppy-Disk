@@ -16,10 +16,12 @@ var bounce_distance: float = 20.0
 var duration: float = 1.5
 
 func _ready() -> void:
-	title_card.position = (GameConfig.SCREEN_SIZE - title_card.size)/2
-	title_card.position.y = GameConfig.SCREEN_SIZE.y/6
+	var screen_size := GameConfig.get_screen_size(self)
 	
-	start_prompt.position = (GameConfig.SCREEN_SIZE - start_prompt.size)/2
+	title_card.position = (screen_size - title_card.size) / 2.0
+	title_card.position.y = screen_size.y / 6.0
+	
+	start_prompt.position = (screen_size - start_prompt.size) / 2.0
 	start_prompt.position.y = title_card.position.y + title_card.size.y + PADDING
 	
 	_start_bounce()

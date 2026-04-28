@@ -7,8 +7,10 @@ func _ready() -> void:
 	bg_2.position.y = bg_1.position.y - bg_2.size.y
 	
 func _process(delta: float) -> void:
-	if bg_1.position.y > GameConfig.SCREEN_SIZE.y:
+	var screen_size := GameConfig.get_screen_size(self)
+	
+	if bg_1.position.y > screen_size.y:
 		bg_1.position.y = bg_2.position.y - bg_1.size.y
 		
-	if bg_2.position.y > GameConfig.SCREEN_SIZE.y:
+	if bg_2.position.y > screen_size.y:
 		bg_2.position.y = bg_1.position.y - bg_2.size.y
