@@ -15,6 +15,7 @@ func setup(room_size: Vector2i, compartment_num: int, enemies: Array = [], has_e
 	data = RoomData.new(room_size, compartment_num, enemies, has_entrance)
 	
 	_construct_tiles()
+	_configure_exit_trigger()
 
 func _construct_tiles() -> void:
 	for tile_pos in data.barrier_tiles:
@@ -22,6 +23,30 @@ func _construct_tiles() -> void:
 	
 	for tile_pos in data.exit_tiles:
 		tile_map_layer.set_cell(tile_pos, SOURCE_ID, EXIT_TILE)
+
+func _configure_exit_trigger() -> void:
+	if data.exit_tiles.is_empty():
+		exit_collision.shape = null
+		return
+	
+	var min_tile: Vector2i = data.exit_tiles[0]
+	var max_tile: Vector2i = data.exit_tiles[0]
+	
+	for tile_pos in data.exit_tiles:
+		min_tile.x = mini(min_tile.x, tile_pos.x)
+		min_tile.y = mini(min_tile.y, tile_pos.y)
+		max_tile.x = maxi(max_tile.x, tile_pos.x)
+		max_tile.y = maxi(max_tile.y, tile_pos.y)
+	
+	var tile_size := tile_map_layer.tile_set.tile_size
+	var top_left := tile_map_layer.map_to_local(min_tile) - Vector2(tile_size) / 2.0
+	var bottom_right := tile_map_layer.map_to_local(max_tile) + Vector2(tile_size) / 2.0
+	var shape := RectangleShape2D.new()
+	
+	shape.size = bottom_right - top_left
+	exit_collision.position = top_left + shape.size / 2.0
+	exit_collision.shape = shape
+	exit_collision.disabled = true
 
 func summon_enemies():
 	for enemy in data.enemies:
