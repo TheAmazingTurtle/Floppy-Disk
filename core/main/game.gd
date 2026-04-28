@@ -45,6 +45,7 @@ func _game_over():
 		return
 
 	is_game_over = true
+	HighScoreStore.save_high_score(level)
 	game_over.emit(level)
 
 func _on_room_manager_level_cleared(new_level: int) -> void:

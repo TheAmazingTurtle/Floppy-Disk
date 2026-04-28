@@ -29,9 +29,18 @@ visible = false
 offset_right = 1280.0
 offset_bottom = 65.0
 
-[node name="Score" type="Label" parent="Details"]
+[node name="Scores" type="VBoxContainer" parent="Details"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="Details/Scores"]
 layout_mode = 2
 text = "Lobby"
+label_settings = SubResource("LabelSettings_8ya5m")
+horizontal_alignment = 1
+
+[node name="HighScore" type="Label" parent="Details/Scores"]
+layout_mode = 2
+text = "High Score: 0"
 label_settings = SubResource("LabelSettings_8ya5m")
 horizontal_alignment = 1
 
@@ -59,12 +68,22 @@ label_settings = SubResource("LabelSettings_bhfsx")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="HighScoreResult" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_top = 420.0
+offset_right = 1280.0
+offset_bottom = 444.0
+text = "HIGH SCORE: 0"
+label_settings = SubResource("LabelSettings_bhfsx")
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="ContinuePrompt" type="Label" parent="GameOverScreen"]
 layout_mode = 0
 offset_left = 0.0
-offset_top = 447.0
+offset_top = 464.0
 offset_right = 1280.0
-offset_bottom = 500.0
+offset_bottom = 517.0
 text = "TAP OR PRESS [SPACE] TO RESTART\nPRESS [ESC] FOR MAIN MENU"
 label_settings = SubResource("LabelSettings_ds3f6")
 horizontal_alignment = 1
