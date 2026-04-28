@@ -1,7 +1,7 @@
 extends Control
 
-@onready var play_button: Button = $Menu/Buttons/PlayButton
-@onready var exit_button: Button = $Menu/Buttons/ExitButton
+@onready var play_button: Button = $Buttons/PlayButton
+@onready var exit_button: Button = $Buttons/ExitButton
 
 var buttons: Array[Button] = []
 var selected_index := 0
