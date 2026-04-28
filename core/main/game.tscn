@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b437jucdxy6r"]
+[gd_scene format=3 uid="uid://b437jucdxy6r"]
 
 [ext_resource type="Script" uid="uid://cn2waig28ha5e" path="res://core/managers/transition_manager.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://hwjon4rioefk" path="res://core/managers/room_manager.gd" id="1_lnu2h"]
@@ -8,52 +8,29 @@
 [ext_resource type="Script" uid="uid://bfudvnfmkj74g" path="res://core/managers/audio_manager.gd" id="6_atr4h"]
 [ext_resource type="AudioStream" uid="uid://dauh6je1a1xtw" path="res://assets/sounds/coin.wav" id="6_wnj16"]
 [ext_resource type="AudioStream" uid="uid://bi3aihh6egamy" path="res://assets/sounds/hurt.wav" id="8_7go5q"]
-[ext_resource type="Script" uid="uid://cm84i6fkfmmp6" path="res://core/managers/background_manager.gd" id="9_36opn"]
-[ext_resource type="Texture2D" uid="uid://m3u8gvqsdjsu" path="res://assets/sprites/background_pcb.png" id="9_loe14"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1939178862]
 script = ExtResource("1_p57ef")
 
-[node name="TransitionManager" type="Node2D" parent="."]
+[node name="TransitionManager" type="Node2D" parent="." unique_id=1740647566]
 script = ExtResource("1_lbhrr")
 
-[node name="RoomManager" type="Node2D" parent="."]
+[node name="RoomManager" type="Node2D" parent="." unique_id=2076458021]
 script = ExtResource("1_lnu2h")
 
-[node name="FloppyDisk" parent="." instance=ExtResource("2_lnu2h")]
+[node name="FloppyDisk" parent="." unique_id=1637614461 instance=ExtResource("2_lnu2h")]
 position = Vector2(636, 272)
 
-[node name="HUD" parent="." instance=ExtResource("5_tsyvt")]
+[node name="HUD" parent="." unique_id=658353954 instance=ExtResource("5_tsyvt")]
 
-[node name="AudioManager" type="Node2D" parent="."]
+[node name="AudioManager" type="Node2D" parent="." unique_id=2024156783]
 script = ExtResource("6_atr4h")
 
-[node name="PickupBits" type="AudioStreamPlayer2D" parent="AudioManager"]
+[node name="PickupBits" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=1849499545]
 stream = ExtResource("6_wnj16")
 
-[node name="PlayerDied" type="AudioStreamPlayer2D" parent="AudioManager"]
+[node name="PlayerDied" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=1688807843]
 stream = ExtResource("8_7go5q")
-
-[node name="BackgroundManager" type="Node2D" parent="."]
-script = ExtResource("9_36opn")
-
-[node name="BG1" type="TextureRect" parent="BackgroundManager" groups=["movable"]]
-modulate = Color(0.38963804, 0.38963804, 0.38963804, 1)
-z_index = -1
-offset_left = 3.0
-offset_top = -1440.0
-offset_right = 1285.0
-offset_bottom = 720.0
-texture = ExtResource("9_loe14")
-
-[node name="BG2" type="TextureRect" parent="BackgroundManager" groups=["movable"]]
-modulate = Color(0.5370987, 0.5370987, 0.5370987, 1)
-z_index = -1
-offset_left = 3.0
-offset_top = -1440.0
-offset_right = 1285.0
-offset_bottom = 720.0
-texture = ExtResource("9_loe14")
 
 [connection signal="game_over" from="." to="FloppyDisk" method="_on_game_game_over"]
 [connection signal="game_over" from="." to="HUD" method="_on_game_game_over"]
