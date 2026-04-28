@@ -58,6 +58,8 @@ animations = [{
 size = Vector2(9.5, 8.5)
 
 [node name="FloppyDisk" type="CharacterBody2D" groups=["movable", "player"]]
+collision_layer = 2
+collision_mask = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_tv3j3")
 
@@ -74,10 +76,12 @@ shape = SubResource("RectangleShape2D_gu111")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -9)
+collision_mask = 1
 target_position = Vector2(-6, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -9)
+collision_mask = 1
 target_position = Vector2(6, 0)
 
 [node name="FlappingSound" type="AudioStreamPlayer2D" parent="."]

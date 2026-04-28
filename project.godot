@@ -36,6 +36,13 @@ window/size/viewport_height=720
 movable=""
 enemy=""
 
+[layer_names]
+
+2d_physics/layer_1="environment"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="bit"
+
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 2)

@@ -106,6 +106,8 @@ animations = [{
 radius = 6.0
 
 [node name="Bits" type="Area2D" groups=["bits", "movable"]]
+collision_layer = 8
+collision_mask = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_re5tw")
 
