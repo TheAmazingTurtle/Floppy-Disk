@@ -95,15 +95,28 @@ label_settings = SubResource("LabelSettings_bhfsx")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="ContinuePrompt" type="Label" parent="GameOverScreen"]
+[node name="Buttons" type="VBoxContainer" parent="GameOverScreen"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 0.0
-offset_top = 464.0
-offset_right = 0.0
-offset_bottom = 517.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = 112.0
+offset_right = 180.0
+offset_bottom = 248.0
 grow_horizontal = 2
-text = "TAP OR PRESS [SPACE] TO RESTART\nPRESS [ESC] FOR MAIN MENU"
-label_settings = SubResource("LabelSettings_ds3f6")
-horizontal_alignment = 1
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="GameOverScreen/Buttons"]
+custom_minimum_size = Vector2(360, 56)
+layout_mode = 2
+text = "RETRY"
+
+[node name="MainMenuButton" type="Button" parent="GameOverScreen/Buttons"]
+custom_minimum_size = Vector2(360, 56)
+layout_mode = 2
+text = "MAIN MENU"
